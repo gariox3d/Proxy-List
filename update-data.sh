@@ -1,10 +1,9 @@
 echo "Getting Proxy List..."
-d=$(curl https://proxy.caliph.my.id/proxy/socks5)
-echo $d > socks5.txt
+wget -O socks.txt https://proxy.caliph.my.id/proxy/socks5
 echo "" > README.md
 echo "# Socks5 Proxy\n\n" >> README.md
 echo "## Proxy List" >> README.md
-echo "\`\`\`$(d)\`\`\`" >> README.md
+echo "\`\`\`$(cat socks5.txt)\`\`\`" >> README.md
 
 echo "Commit Result to Github"
 git config --global user.email "admin@caliph.my.id"
