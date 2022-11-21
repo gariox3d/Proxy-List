@@ -1,7 +1,7 @@
 echo "Getting Proxy List..."
 wget -O socks.txt https://proxy.caliph.my.id/proxy/socks5
 echo "" > README.md
-echo "# Socks5 Proxy\n\n" >> README.md
+echo "# Socks5 Proxy" >> README.md
 echo "## Proxy List" >> README.md
 echo "\`\`\`$(cat socks5.txt)\`\`\`" >> README.md
 
