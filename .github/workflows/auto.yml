@@ -2,12 +2,12 @@ name: PROXY Updater
 
 on:
   schedule:
-    - cron: '* * * * *'
+    - cron: '5 * * * *'
 
 jobs:
-  health_check_job:
+  update_proxy:
     runs-on: ubuntu-latest
-    name: Check all sites
+    name: Check Proxy List 
     steps:
       - uses: actions/checkout@v2
       - name: Run Shell Script
