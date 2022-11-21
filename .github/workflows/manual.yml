@@ -1,0 +1,35 @@
+name: PROXY Updater
+
+on: workflow_dispatch
+
+jobs:
+  auto_commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3      
+        with:
+         persist-credentials: false
+         fetch-depth: 0
+
+      - name: Update Proxy List
+        run: |
+          d=`curl https://proxy.caliph.my.id/proxy/socks5`
+          echo $d > socks5.txt
+          echo "" > README.md
+          echo "# Socks5 Proxy\n\n" >> README.md
+          echo "## Proxy List\n" >> README.md
+          echo "\`\`\`\n$($d)\n\`\`\`" >> README.md
+          
+      - name: Commit changes
+        run: |
+          git config --local user.email "admin@caliph.my.id"
+          git config --local user.name "caliphdev"
+          git add -A
+          git commit -m "Update Proxy List"
+          
+      - name: GitHub Push
+        uses: ad-m/github-push-action@master
+        with:
+          force_with_lease: true
+          directory: "."
+          github_token: ${{ secrets.GITHUB_TOKEN }}
