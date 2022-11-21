@@ -2,7 +2,7 @@ name: PROXY Updater
 
 on:
   schedule:
-    - cron: '5 * * * *'
+    - cron: '* * * * *'
 
 jobs:
   auto_commit:
@@ -17,6 +17,9 @@ jobs:
         run: |
           d=`curl https://proxy.caliph.my.id/proxy/socks5`
           echo $d > socks5.txt
+          echo "# Socks5 Proxy\n\n" >> README.md
+          echo "## Proxy List\n" >> README.md
+          echo "\`\`\`\n$($d)\n\`\`\`" >> README.md
           
       - name: Commit changes
         run: |
