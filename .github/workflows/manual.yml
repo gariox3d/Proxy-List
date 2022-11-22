@@ -1,4 +1,4 @@
-name: PROXY Updater
+name: PROXY Updater (Manual)
 
 on: workflow_dispatch
 
